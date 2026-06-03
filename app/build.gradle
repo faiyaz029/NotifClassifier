@@ -1,0 +1,54 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.notifclassifier'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.notifclassifier"
+        minSdk 21           // Android 5.0 — covers Redmi 8A (Android 10 = API 29)
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    // Core AndroidX
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+
+    // Material — needed for Theme.MaterialComponents
+    implementation 'com.google.android.material:material:1.11.0'
+
+    // RecyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+
+    // CardView
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    // ConstraintLayout (optional — layouts currently use LinearLayout only)
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // NOTE: NO Retrofit, NO OkHttp, NO coroutines.
+    // HTTP calls use java.net.HttpURLConnection + java.util.concurrent.Executors only.
+}

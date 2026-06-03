@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Required by the NotificationListenerService framework.
+    Place this file at res/xml/notification_listener_service.xml
+    and reference it from your service declaration in AndroidManifest.xml
+    if you want to restrict which notification categories are listened to.
+    Leaving this empty means all notifications are received.
+-->
+<notification-listener
+    xmlns:android="http://schemas.android.com/apk/res/android" />

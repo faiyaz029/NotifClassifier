@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!--  PERMISSION SCREEN                                              -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/permissionScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔔"
+            android:textSize="64sp"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notification Classifier"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This app intercepts your notifications and classifies them using an AI backend for research purposes.\n\nAll data is used only for training the classifier. You can rate each classification to improve accuracy."
+            android:textSize="14sp"
+            android:textColor="#AAAAAA"
+            android:textAlignment="center"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Permission status row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="#1E1E1E"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:id="@+id/permStatusIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔴"
+                android:textSize="24sp"
+                android:layout_marginEnd="12dp" />
+
+            <TextView
+                android:id="@+id/permStatusText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notification access not granted"
+                android:textSize="16sp"
+                android:textColor="#FF4444" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnOpenSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open Notification Settings"
+            android:backgroundTint="#1976D2"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:padding="14dp" />
+
+    </LinearLayout>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!--  MAIN SCREEN                                                    -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <LinearLayout
+        android:id="@+id/mainScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!-- Top toolbar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#1E1E1E"
+            android:padding="8dp"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🔔 Notification Feed"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:gravity="center_vertical"
+                android:padding="8dp" />
+
+            <Button
+                android:id="@+id/btnExportCsv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Export CSV"
+                android:textSize="12sp"
+                android:backgroundTint="#2E7D32"
+                android:textColor="#FFFFFF"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
+        </LinearLayout>
+
+        <!-- Pipeline log panel -->
+        <LinearLayout
+            android:id="@+id/pipelinePanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#0D1117"
+            android:padding="0dp">
+
+            <Button
+                android:id="@+id/btnTogglePipeline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hide Pipeline Log ▲"
+                android:textSize="12sp"
+                android:backgroundTint="#1A1A2E"
+                android:textColor="#7C83FD"
+                android:padding="6dp" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+                <TextView
+                    android:id="@+id/tvPipelineLog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Waiting for notifications…"
+                    android:textSize="12sp"
+                    android:textColor="#00FF41"
+                    android:fontFamily="monospace"
+                    android:padding="8dp"
+                    android:lineSpacingMultiplier="1.4" />
+            </ScrollView>
+        </LinearLayout>
+
+        <!-- Empty state -->
+        <TextView
+            android:id="@+id/tvEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="No notifications yet.\nSend a WhatsApp message or\ntrigger any notification to begin."
+            android:textColor="#555555"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:visibility="visible" />
+
+        <!-- Notification list -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingBottom="8dp" />
+
+    </LinearLayout>
+
+</FrameLayout>
